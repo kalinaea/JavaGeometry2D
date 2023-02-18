@@ -39,11 +39,26 @@ public class Application implements Consumer<Event> {
     /**
      * Конструктор окна приложения
      */
+    /**
+     * Первый заголовок
+     */
+    private final Label label2;
+    /**
+     * Первый заголовок
+     */
+    private final Label label3;
+
+    // создаём второй заголовок
     public Application() {
         // создаём окно
         window = App.makeWindow();
         // задаём обработчиком событий текущий объект
-        label = new Label(window, true, PANEL_BACKGROUND_COLOR, PANEL_PADDING, "Привет, мир!", true, true);
+        label = new Label(window, true, PANEL_BACKGROUND_COLOR, PANEL_PADDING, "Привет, мир!", true, true, 1, 1, 1, 1, 4, 4);
+        label2 = new Label(window, true, PANEL_BACKGROUND_COLOR, PANEL_PADDING, "Второй заголовок", true, true, 0, 3, 1, 1, 4, 4 );
+
+        // создаём третий заголовок
+        label3 = new Label(window, true, PANEL_BACKGROUND_COLOR, PANEL_PADDING, "Это тоже заголовок", true, true,
+                2, 0, 1, 1, 4, 4);
         window.setEventListener(this);
         // задаём заголовок
         window.setTitle("Java 2D");
@@ -114,10 +129,13 @@ public class Application implements Consumer<Event> {
         // очищаем канвас
         canvas.clear(APP_BACKGROUND_COLOR);
         // рисуем заголовок
-        label.paint(canvas, new CoordinateSystem2i(100, 100, 200, 200));
-
+        ;
+        label.paint(canvas, windowCS);
+        // рисуем второй заголовок
+        label2.paint(canvas, windowCS);
+        // рисуем третий заголовок
+        label3.paint(canvas, windowCS);
         // восстанавливаем состояние канваса
         canvas.restore();
     }
-
 }
