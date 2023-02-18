@@ -36,7 +36,7 @@ public abstract class Panel implements Consumer<Event>{
      * @param backgroundColor цвет фона
      * @param padding         отступы
      */
-}
+
     public Panel(Window window, boolean drawBG, int backgroundColor, int padding) {
         this.window = window;
         this.drawBG = drawBG;
