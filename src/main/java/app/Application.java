@@ -43,7 +43,7 @@ public class Application implements Consumer<Event> {
         // создаём окно
         window = App.makeWindow();
         // задаём обработчиком событий текущий объект
-        label = new Label(window, true, PANEL_BACKGROUND_COLOR, PANEL_PADDING, "Привет, мир!");
+        label = new Label(window, true, PANEL_BACKGROUND_COLOR, PANEL_PADDING, "Привет, мир!", true, true);
         window.setEventListener(this);
         // задаём заголовок
         window.setTitle("Java 2D");

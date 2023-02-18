@@ -29,9 +29,19 @@ public class Label extends Panel {
      * @param padding         отступы
      * @param text            текст
      */
-    public Label(Window window, boolean drawBG, int backgroundColor, int padding, String text) {
+    /**
+     * Флаг, нужно ли выравнивать текст по центру по горизонтали
+     */
+    protected boolean centered;
+    /**
+     * Флаг, нужно ли выравнивать текст по центру по вертикали
+     */
+    protected boolean vcentered;
+    public Label(Window window, boolean drawBG, int backgroundColor, int padding, String text, boolean centered, boolean vcentered) {
         super(window, drawBG, backgroundColor, padding);
         this.text = text;
+        this.centered = centered;
+        this.vcentered = vcentered;
     }
 
     /**
@@ -49,6 +59,10 @@ public class Label extends Panel {
             // получаем высоту текста
             int capHeight = (int) FONT12.getMetrics().getCapHeight();
             // рисуем текст
+            if (centered)
+                canvas.translate((windowCS.getSize().x - line.getWidth()) / 2.0f, 0);
+            if (vcentered)
+                canvas.translate(0, (windowCS.getSize().y - capHeight) / 2.0f);
             try (Paint fg = new Paint().setColor(LABEL_TEXT_COLOR)) {
                 canvas.drawTextLine(line, 0, capHeight, fg);
             }
